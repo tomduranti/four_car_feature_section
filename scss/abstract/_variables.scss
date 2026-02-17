@@ -1,0 +1,52 @@
+@use "./functions" as func;
+@use "sass:map";
+
+//COLOR
+$blue: #549EF2;
+$cyan: #44D3D2;
+$light_cyan: #83A6D2;
+$grey: (
+    400: #6A7178,
+    500: #4D4F62
+);
+$orange: #FCAE4A;
+$red: #EA5454;
+$white: #FFFFFF;
+
+// TYPOGRAPHY
+$font_family: "Poppins", serif;
+
+$spacing: (
+    // 0:    0,
+    // 25:   0.125em,    // 2px
+    // 50:   0.25em,     // 4px
+    // 75:   0.375em,    // 6px
+    // 100:  0.5em,      // 8px
+    // 125:  0.625em,    // 10px
+    // 150:  0.75em,     // 12px
+    // 200:  1em,        // 16px
+    // 250:  1.25em,
+    // 300:  1.5em,      // 24px
+    // 375:  1.875em,    // 30px
+    // 400:  2em,        // 32px
+    // 500:  2.5em,      // 40px
+    // 600:  3em,
+    // 650:  3.5em,      // 56px
+    // 675:  3.75em,     // 60px
+    // 800:  4em,        // 64px
+    // 825:  4.625em,    // 74px
+    // 1000: 5em,
+    // 2000: 10.188em    // 163px
+
+    8 : func.to_rem(8),
+    16 : func.to_rem(16),
+    24 : func.to_rem(24),
+    32 : func.to_rem(32),
+    40 : func.to_rem(40),
+);
+
+$special_spacing: (
+    1: func.to_rem(1),
+    2: func.to_rem(2),
+    4: func.to_rem(4),
+)

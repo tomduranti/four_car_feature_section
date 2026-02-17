@@ -1,0 +1,133 @@
+@use "../../abstract/variables" as var;
+@use "../../abstract/mixins" as mix;
+@use "sass:map";
+
+.grid {
+    display: grid;
+    gap: map.get(var.$spacing, 32);
+    margin-block-end: calc(map.get(var.$spacing, 40) + map.get(var.$spacing, 16) + map.get(var.$special_spacing, 4));
+
+    .grid_item {
+        min-block-size: 14.688em;
+        inline-size: 19.625em;
+        border-radius: map.get(var.$spacing, 8);
+        box-shadow: 0 calc(map.get(var.$spacing, 16) - map.get(var.$special_spacing, 1)) 1.875rem -0.688rem var.$light_cyan;
+        overflow: hidden;
+        @include mix.transition(.3s, ease, transform);
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &__content {
+            padding-inline: map.get(var.$spacing, 32);
+            padding-block: map.get(var.$spacing, 32) calc(map.get(var.$spacing, 40) + map.get(var.$spacing, 8) - map.get(var.$special_spacing, 1));
+        }
+
+        &__title {
+            margin-block-end: calc(map.get(var.$special_spacing, 4) + map.get(var.$special_spacing, 2));
+        }
+
+        &__text {
+            inline-size: 100%;
+            max-inline-size: 15.625em;
+            margin-block-end: map.get(var.$spacing, 32);
+        }
+
+        &__img {
+            display: block;
+            margin-inline-start: auto;
+        }
+
+        .color_line--cyan {
+            background-color: var.$cyan;
+        }
+
+        .color_line--red {
+            background-color: var.$red;
+        }
+
+        .color_line--orange {
+            background-color: var.$orange;
+        }
+
+        .color_line--blue {
+            background-color: var.$blue;
+        }
+
+        &:nth-of-type(2) {
+            grid-row-start: 2;
+        }
+
+        &:nth-of-type(3) {
+            grid-row-start: 3;
+        }
+
+        &:nth-of-type(4) {
+            grid-row-start: 4;
+        }
+    }
+}
+
+@include mix.respond_to(min, m_screen) {
+
+    .grid {
+        margin-block-end: calc(map.get(var.$spacing, 40) * 2);
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+
+        .grid_item {
+
+            &:nth-of-type(1) {
+                grid-area: 2 / 1 / 3 / 2;
+            }
+
+            &:nth-of-type(2) {
+                grid-area: 1 / 1 / 2 / -1;
+                justify-self: center;
+            }
+
+            &:nth-of-type(3) {
+                grid-area: 2 / 2 / 3 / 3;
+            }
+
+            &:nth-of-type(4) {
+                grid-area: 3 / 1 / -1 / -1;
+                justify-self: center;
+            }
+        }
+    }
+}
+
+@include mix.respond_to(min, l_screen) {
+
+    .grid {
+        margin-block-end: calc(map.get(var.$spacing, 40) * 4 + map.get(var.$special_spacing, 4) - map.get(var.$special_spacing, 1));
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+
+        .grid_item {
+            min-block-size: 15.625em;
+            inline-size: 21.875em;
+
+            &:nth-of-type(1) {
+                grid-area: 1 / 1 / -1 / -1;
+                align-self: center;
+            }
+
+            &:nth-of-type(2) {
+                grid-area: 1 / 1 / 2 / -1;
+
+            }
+
+            &:nth-of-type(3) {
+                grid-area: 2 / 2 / 3 / 3;
+            }
+
+            &:nth-of-type(4) {
+                grid-area: 1 / 3 / -1 / -1;
+                align-self: center;
+            }
+        }
+    }
+}

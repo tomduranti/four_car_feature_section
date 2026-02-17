@@ -1,0 +1,19 @@
+@use "../abstract/mixins" as mix;
+
+.container {
+    inline-size: 100%;
+    max-inline-size: 19.75em;
+    margin: 0 auto;
+}
+
+@include mix.respond_to(min, m_screen) {
+    .container {
+        max-inline-size: 41.25em;
+    }
+}
+
+@include mix.respond_to(min, l_screen) {
+    .container {
+        max-inline-size: 69.625em;
+    }
+}

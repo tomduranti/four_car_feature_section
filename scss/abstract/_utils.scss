@@ -1,0 +1,7 @@
+@use "./variables" as var;
+@use "sass:map";
+
+.color_line {
+    inline-size: 100%;
+    block-size: map.get(var.$special_spacing, 4);
+}
